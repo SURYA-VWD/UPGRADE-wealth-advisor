@@ -36,7 +36,7 @@ app = FastAPI(
     title=settings.PROJECT_NAME,
     description="Upgrader: A mathematically rigorous, responsive, and secure personal finance advisory platform.",
     version="1.0.0",
-    lifespan=lifespan
+    lifespan=None if os.getenv("VERCEL") else lifespan
 )
 
 # CORS configurations
@@ -68,23 +68,23 @@ valid_dirs = [d for d in candidate_dirs if os.path.exists(d)]
 templates = Jinja2Templates(directory=valid_dirs if valid_dirs else candidate_dirs[0])
 
 
-
 @app.get("/")
 async def serve_dashboard(request: Request):
     """Serves the premium single-page dashboard page."""
-    return templates.TemplateResponse(
+    context = {
+        "request": request,
+        "project_name": settings.PROJECT_NAME,
+        "developer_name": settings.DEVELOPER_NAME,
+        "firebase_api_key": settings.FIREBASE_API_KEY,
+        "firebase_auth_domain": settings.FIREBASE_AUTH_DOMAIN,
+        "firebase_project_id": settings.FIREBASE_PROJECT_ID,
+        "firebase_storage_bucket": settings.FIREBASE_STORAGE_BUCKET,
+        "firebase_messaging_sender_id": settings.FIREBASE_MESSAGING_SENDER_ID,
+        "firebase_app_id": settings.FIREBASE_APP_ID,
+        "firebase_measurement_id": settings.FIREBASE_MEASUREMENT_ID
+    }
+    try:
+        return templates.TemplateResponse("dashboard.html", context)
+    except TypeError:
+        return templates.TemplateResponse(name="dashboard.html", context=context, request=request)
 
-        "dashboard.html", 
-        {
-            "request": request, 
-            "project_name": settings.PROJECT_NAME,
-            "developer_name": settings.DEVELOPER_NAME,
-            "firebase_api_key": settings.FIREBASE_API_KEY,
-            "firebase_auth_domain": settings.FIREBASE_AUTH_DOMAIN,
-            "firebase_project_id": settings.FIREBASE_PROJECT_ID,
-            "firebase_storage_bucket": settings.FIREBASE_STORAGE_BUCKET,
-            "firebase_messaging_sender_id": settings.FIREBASE_MESSAGING_SENDER_ID,
-            "firebase_app_id": settings.FIREBASE_APP_ID,
-            "firebase_measurement_id": settings.FIREBASE_MEASUREMENT_ID
-        }
-    )
