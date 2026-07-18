@@ -65,9 +65,8 @@ templates = Jinja2Templates(directory=TEMPLATES_DIR)
 @app.get("/")
 async def serve_dashboard(request: Request):
     """Serves the premium single-page dashboard page."""
-    # Ensure templates directory exists before rendering
-    os.makedirs("templates", exist_ok=True)
     return templates.TemplateResponse(
+
         "dashboard.html", 
         {
             "request": request, 

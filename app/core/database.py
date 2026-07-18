@@ -1,15 +1,19 @@
+import os
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import declarative_base
 from app.core.config import settings
 
 # Convert standard Postgres URLs to asyncpg protocol dynamically
 db_url = settings.DATABASE_URL
-if db_url.startswith("postgres://"):
+if os.getenv("VERCEL") and "sqlite" in db_url and "/tmp/" not in db_url:
+    db_url = "sqlite+aiosqlite:////tmp/upgrader.db"
+elif db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql+asyncpg://", 1)
 elif db_url.startswith("postgresql://") and not db_url.startswith("postgresql+"):
     db_url = db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
 elif db_url.startswith("sqlite://") and not db_url.startswith("sqlite+"):
     db_url = db_url.replace("sqlite://", "sqlite+aiosqlite://", 1)
+
 
 
 # Determine database-specific connection arguments
