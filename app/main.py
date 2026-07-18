@@ -57,8 +57,10 @@ async def health_check():
     return {"status": "ok", "app": settings.PROJECT_NAME}
 
 # Setup template renderer
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+templates = Jinja2Templates(directory=TEMPLATES_DIR)
 
-templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 async def serve_dashboard(request: Request):
