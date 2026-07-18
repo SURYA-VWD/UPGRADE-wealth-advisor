@@ -24,12 +24,13 @@ def _run_migrations(sync_conn):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Dynamically create schemas and tables on startup
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-        await conn.run_sync(_run_migrations)
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+            await conn.run_sync(_run_migrations)
+    except Exception as e:
+        print(f"Lifespan DB init warning: {e}")
     yield
-    # Shutdown steps can be added here if needed
-
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -56,10 +57,16 @@ async def health_check():
     """Health check endpoint for Railway, Render, and external monitoring."""
     return {"status": "ok", "app": settings.PROJECT_NAME}
 
-# Setup template renderer
+# Setup template renderer with robust multi-directory fallback for Vercel Serverless
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
-templates = Jinja2Templates(directory=TEMPLATES_DIR)
+candidate_dirs = [
+    os.path.join(BASE_DIR, "templates"),
+    os.path.join(os.getcwd(), "templates"),
+    "templates"
+]
+valid_dirs = [d for d in candidate_dirs if os.path.exists(d)]
+templates = Jinja2Templates(directory=valid_dirs if valid_dirs else candidate_dirs[0])
+
 
 
 @app.get("/")
