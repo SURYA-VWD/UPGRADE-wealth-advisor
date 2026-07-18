@@ -12,19 +12,24 @@ from app.models.activity import ActivityLog
 from app.api.auth import router as auth_router
 from app.api.finance import router as finance_router
 
+def _run_migrations(sync_conn):
+    from sqlalchemy import inspect, text
+    inspector = inspect(sync_conn)
+    if inspector.has_table("activity_logs"):
+        columns = [c["name"] for c in inspector.get_columns("activity_logs")]
+        if "amount_invested" not in columns:
+            sync_conn.execute(text("ALTER TABLE activity_logs ADD COLUMN amount_invested NUMERIC(12, 2)"))
+
 # Lifespan events management (Database table initialization)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Dynamically create schemas and tables on startup
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-        from sqlalchemy import text
-        try:
-            await conn.execute(text("ALTER TABLE activity_logs ADD COLUMN amount_invested NUMERIC(12, 2)"))
-        except Exception:
-            pass  # Suppress errors if column already exists
+        await conn.run_sync(_run_migrations)
     yield
     # Shutdown steps can be added here if needed
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -46,7 +51,13 @@ app.add_middleware(
 app.include_router(auth_router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(finance_router, prefix="/api/finance", tags=["Finance"])
 
+@app.get("/health", tags=["Health"])
+async def health_check():
+    """Health check endpoint for Railway, Render, and external monitoring."""
+    return {"status": "ok", "app": settings.PROJECT_NAME}
+
 # Setup template renderer
+
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
