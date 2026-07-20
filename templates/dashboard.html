@@ -192,6 +192,7 @@
                 <div class="hidden sm:flex items-center space-x-1">
                     <button class="tab-btn active">Investment Planning</button>
                     <button class="tab-btn" onclick="openCalculatorModal('sip')">SIP Calculator</button>
+                    <button class="tab-btn" onclick="openCalculatorModal('swp')">SWP Calculator</button>
                     <button class="tab-btn" onclick="openCalculatorModal('emi')">EMI Calculator</button>
                     <button class="tab-btn" onclick="openCalculatorModal('homeloan')">Home Loan</button>
                     <button class="tab-btn" onclick="openCalculatorModal('carloan')">Car Loan</button>
@@ -360,6 +361,18 @@
                     </button>
                 </form>
             </div>
+
+            <!-- Gateway View Footer -->
+            <footer class="w-full py-4 text-center mt-6 text-xs text-slate-500 font-medium space-y-2 border-t border-steel-200">
+                <div>&copy; 2026 UPGRADER. All Rights Reserved.<br>Created and maintained by Surya V.</div>
+                <div class="flex justify-center items-center space-x-3 text-[11px] text-[#2c5985]">
+                    <button onclick="openLegalModal('privacy')" class="hover:underline font-semibold">Privacy Policy</button>
+                    <span>&bull;</span>
+                    <button onclick="openLegalModal('terms')" class="hover:underline font-semibold">Terms &amp; Conditions</button>
+                    <span>&bull;</span>
+                    <button onclick="openLegalModal('copyright')" class="hover:underline font-semibold">Copyright Policy</button>
+                </div>
+            </footer>
         </div>
 
         <!-- ==========================================
@@ -474,7 +487,7 @@
                     <p class="text-xs text-slate-500 mt-1">Select a calculator to run compound calculations and EMI projections.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Calculator 1: SIP -->
                     <div onclick="openCalculatorModal('sip')" class="p-6 bg-white border border-steel-200 rounded-xl shadow-sm cursor-pointer hover:border-[#4e7a27] transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
                         <div class="border-t-4 border-[#2b7bda] absolute top-0 left-0 right-0"></div>
@@ -487,7 +500,19 @@
                         </svg>
                     </div>
 
-                    <!-- Calculator 2: EMI -->
+                    <!-- Calculator 2: SWP -->
+                    <div onclick="openCalculatorModal('swp')" class="p-6 bg-white border border-steel-200 rounded-xl shadow-sm cursor-pointer hover:border-[#4e7a27] transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
+                        <div class="border-t-4 border-[#2e7d32] absolute top-0 left-0 right-0"></div>
+                        <div>
+                            <h4 class="text-lg font-bold text-[#2c5985] tracking-tight group-hover:text-[#4e7a27] transition-colors">SWP Withdrawal Plan</h4>
+                            <p class="text-xs text-slate-600 mt-2 pr-12 leading-relaxed">Calculate systematic monthly withdrawals & remaining corpus.</p>
+                        </div>
+                        <svg class="w-14 h-14 text-steel-100 group-hover:text-[#4e7a27] opacity-60 transition-colors absolute right-4 bottom-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+
+                    <!-- Calculator 3: EMI -->
                     <div onclick="openCalculatorModal('emi')" class="p-6 bg-white border border-steel-200 rounded-xl shadow-sm cursor-pointer hover:border-[#4e7a27] transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
                         <div class="border-t-4 border-[#4e7a27] absolute top-0 left-0 right-0"></div>
                         <div>
@@ -502,7 +527,7 @@
                         </svg>
                     </div>
 
-                    <!-- Calculator 3: Home Loan -->
+                    <!-- Calculator 4: Home Loan -->
                     <div onclick="openCalculatorModal('homeloan')" class="p-6 bg-white border border-steel-200 rounded-xl shadow-sm cursor-pointer hover:border-[#4e7a27] transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
                         <div class="border-t-4 border-[#8cc63f] absolute top-0 left-0 right-0"></div>
                         <div>
@@ -515,7 +540,7 @@
                         </svg>
                     </div>
 
-                    <!-- Calculator 4: Car Loan -->
+                    <!-- Calculator 5: Car Loan -->
                     <div onclick="openCalculatorModal('carloan')" class="p-6 bg-white border border-steel-200 rounded-xl shadow-sm cursor-pointer hover:border-[#4e7a27] transition-all flex flex-col justify-between min-h-[160px] relative overflow-hidden group">
                         <div class="border-t-4 border-[#8b0000] absolute top-0 left-0 right-0"></div>
                         <div>
@@ -539,9 +564,16 @@
                 </div>
             </section>
 
-            <!-- Application Developer Footer -->
-            <footer class="w-full py-4 text-center border-t border-steel-200 mt-6 text-xs text-slate-500 font-medium">
-                Upgrader Financial Advisory Platform &bull; Developed by <span class="font-extrabold text-[#2c5985]">SURYA V</span>
+            <!-- Dashboard View Footer -->
+            <footer class="w-full py-4 text-center border-t border-steel-200 mt-6 text-xs text-slate-500 font-medium space-y-2">
+                <div>&copy; 2026 UPGRADER. All Rights Reserved.<br>Created and maintained by Surya V.</div>
+                <div class="flex justify-center items-center space-x-3 text-[11px] text-[#2c5985]">
+                    <button onclick="openLegalModal('privacy')" class="hover:underline font-semibold">Privacy Policy</button>
+                    <span>&bull;</span>
+                    <button onclick="openLegalModal('terms')" class="hover:underline font-semibold">Terms &amp; Conditions</button>
+                    <span>&bull;</span>
+                    <button onclick="openLegalModal('copyright')" class="hover:underline font-semibold">Copyright Policy</button>
+                </div>
             </footer>
 
         </div>
@@ -891,6 +923,138 @@
             </div>
         </div>
     </div>
+    <!-- SWP Calculator Modal -->
+    <div id="modal-swp" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center hidden animate-fade-in p-4 sm:p-6 overflow-y-auto">
+        <div class="w-full max-w-lg max-h-[85vh] bg-white border border-steel-200 rounded-xl shadow-2xl relative text-slate-900 mx-auto flex flex-col overflow-hidden my-auto">
+            <div class="flex justify-between items-center px-5 py-3.5 border-b border-steel-100 bg-white flex-shrink-0">
+                <h3 class="text-base font-bold text-[#2c5985] uppercase tracking-wider flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-[#4e7a27]"></span>
+                    SWP Withdrawal Calculator
+                </h3>
+                <button onclick="closeCalculatorModal('swp')" class="text-slate-400 hover:text-[#8b0000] font-bold text-xl leading-none">&times;</button>
+            </div>
+            <div class="p-5 space-y-4 overflow-y-auto flex-1 min-h-0">
+                <div>
+                    <label class="flex justify-between text-xs font-bold text-slate-600 uppercase mb-1">
+                        <span>Total Investment Corpus:</span>
+                        <span id="label-swp-amount" class="text-[#2c5985] font-extrabold">₹50,00,000</span>
+                    </label>
+                    <input type="range" id="input-swp-amount" min="100000" max="50000000" step="50000" value="5000000" oninput="runSwpCalc()" class="w-full h-1.5 bg-steel-100 accent-[#4e7a27] rounded cursor-pointer">
+                </div>
+                <div>
+                    <label class="flex justify-between text-xs font-bold text-slate-600 uppercase mb-1">
+                        <span>Monthly Withdrawal Amount:</span>
+                        <span id="label-swp-withdrawal" class="text-[#2c5985] font-extrabold">₹30,000</span>
+                    </label>
+                    <input type="range" id="input-swp-withdrawal" min="1000" max="500000" step="1000" value="30000" oninput="runSwpCalc()" class="w-full h-1.5 bg-steel-100 accent-[#4e7a27] rounded cursor-pointer">
+                </div>
+                <div>
+                    <label class="flex justify-between text-xs font-bold text-slate-600 uppercase mb-1">
+                        <span>Expected Return (%):</span>
+                        <span id="label-swp-return" class="text-[#2c5985] font-extrabold">8.0%</span>
+                    </label>
+                    <input type="range" id="input-swp-return" min="1" max="30" step="0.5" value="8" oninput="runSwpCalc()" class="w-full h-1.5 bg-steel-100 accent-[#4e7a27] rounded cursor-pointer">
+                </div>
+                <div>
+                    <label class="flex justify-between text-xs font-bold text-slate-600 uppercase mb-1">
+                        <span>Annual Inflation Rate (%):</span>
+                        <span id="label-swp-inflation" class="text-[#2c5985] font-extrabold">6.0%</span>
+                    </label>
+                    <input type="range" id="input-swp-inflation" min="0" max="15" step="0.5" value="6" oninput="runSwpCalc()" class="w-full h-1.5 bg-steel-100 accent-[#4e7a27] rounded cursor-pointer">
+                </div>
+                <div>
+                    <label class="flex justify-between text-xs font-bold text-slate-600 uppercase mb-1">
+                        <span>Duration (Years):</span>
+                        <span id="label-swp-years" class="text-[#2c5985] font-extrabold">10 Years</span>
+                    </label>
+                    <input type="range" id="input-swp-years" min="1" max="40" step="1" value="10" oninput="runSwpCalc()" class="w-full h-1.5 bg-steel-100 accent-[#4e7a27] rounded cursor-pointer">
+                </div>
+
+                <div class="rounded border border-[#4e7a27] overflow-hidden shadow-sm">
+                    <div class="results-header-box flex justify-between items-center px-4 py-2">
+                        <span class="text-sm font-bold">Results</span>
+                        <button onclick="saveCalculatorResult('swp')" class="text-xs font-bold opacity-90 hover:opacity-100 hover:underline flex items-center gap-1 transition-all">💾 Save & Export Report</button>
+                    </div>
+                    <div class="p-4 bg-white space-y-2.5">
+                        <div class="flex justify-between text-xs text-slate-600">
+                            <span>Total Investment (Corpus):</span>
+                            <span id="out-swp-principal" class="font-bold text-[#2b7bda]">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-600">
+                            <span>Total Withdrawal Amount:</span>
+                            <span id="out-swp-withdrawal" class="font-bold text-[#8b0000]">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-600">
+                            <span>Estimated Interest Earned:</span>
+                            <span id="out-swp-interest" class="font-bold text-slate-700">₹0</span>
+                        </div>
+                        <div class="border-t border-slate-200 my-1"></div>
+                        <div class="flex justify-between text-sm font-extrabold text-slate-900">
+                            <span>Final Remaining Balance:</span>
+                            <span id="out-swp-total" class="text-green-val font-black text-base">₹0</span>
+                        </div>
+                        <div id="out-swp-status" class="hidden text-[11px] font-semibold text-[#8b0000] bg-red-50 p-2 rounded border border-red-200 text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unified Legal Documentation Modal -->
+    <div id="modal-legal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center hidden animate-fade-in p-4 sm:p-6 overflow-y-auto">
+        <div class="w-full max-w-2xl max-h-[85vh] bg-white border border-steel-200 rounded-xl shadow-2xl relative text-slate-900 mx-auto flex flex-col overflow-hidden my-auto">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-steel-100 bg-white flex-shrink-0">
+                <h3 id="legal-modal-title" class="text-lg font-bold text-[#2c5985] uppercase tracking-wider flex items-center gap-2">
+                    Legal Policy & Compliance
+                </h3>
+                <button onclick="closeLegalModal()" class="text-slate-400 hover:text-[#8b0000] font-bold text-2xl leading-none">&times;</button>
+            </div>
+            <div class="p-6 space-y-4 overflow-y-auto flex-1 min-h-0 text-xs text-slate-700 leading-relaxed">
+                <!-- Privacy Policy Content -->
+                <div id="legal-privacy-content" class="space-y-3 hidden">
+                    <p class="font-semibold text-slate-900">Effective Date: January 2026</p>
+                    <p>At UPGRADER Wealth Advisor, we prioritize the protection and security of your personal and financial information. This Privacy Policy details how data is managed within our platform.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">1. Information Collection & Authentication</h4>
+                    <p>We process account details provided during authentication (via Google OAuth 2.0 or local authentication). User credentials and identity parameters are managed through secure Firebase Authentication protocols. UPGRADER does not store raw passwords or unencrypted credentials.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">2. Financial Data Handling</h4>
+                    <p>Financial inputs including salary, monthly expense figures, and asset allocations are stored securely to generate financial advisory analytics, wealth growth curves, and downloadable audit reports. Your financial data is strictly used for platform calculations and is never sold, traded, or shared with third-party marketers or brokers.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">3. Cookies & Session Security</h4>
+                    <p>UPGRADER utilizes HTTP-Only encrypted cookies for session verification. These cookies ensure authenticated access while protecting against cross-site scripting (XSS) and unauthorized access.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">4. User Rights & Data Protection</h4>
+                    <p>Users maintain full ownership over their profiles. You can update account information or end active sessions at any time via the Account Manager profile.</p>
+                </div>
+
+                <!-- Terms & Conditions Content -->
+                <div id="legal-terms-content" class="space-y-3 hidden">
+                    <p class="font-semibold text-slate-900">Effective Date: January 2026</p>
+                    <p>By accessing or using the UPGRADER Wealth Advisory platform, you agree to comply with and be bound by the following Terms and Conditions.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">1. Financial Advisory Disclaimer</h4>
+                    <p>UPGRADER is a financial planning and analytical software tool. All projections, calculations (including SIP, SWP, EMI, Home Loan, and Car Loan calculators), and advisory engine outputs are provided for educational, illustrative, and planning purposes only. They do not constitute formal SEBI-registered investment advice, tax advice, or guaranteed financial returns.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">2. User Responsibilities</h4>
+                    <p>Users are responsible for ensuring the accuracy of financial figures entered into the gateway. Actual financial decisions should be evaluated alongside professional financial advisors.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">3. Acceptable Use</h4>
+                    <p>Users agree not to attempt unauthorized access, reverse-engineer platform algorithms, or misuse platform APIs. UPGRADER reserves the right to terminate access in the event of malicious activities.</p>
+                </div>
+
+                <!-- Copyright Policy Content -->
+                <div id="legal-copyright-content" class="space-y-3 hidden">
+                    <p class="font-semibold text-slate-900">© 2026 UPGRADER. All Rights Reserved.</p>
+                    <p>Created and maintained by <strong class="text-[#2c5985]">Surya V</strong>.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">1. Intellectual Property Ownership</h4>
+                    <p>All content, source code, financial algorithms, user interface designs, logos, brand elements, and advisory models contained within the UPGRADER platform are the exclusive intellectual property of Surya V and UPGRADER.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">2. Trademark Notice</h4>
+                    <p>The UPGRADER name, logo, software branding, and visual assets are protected under applicable trademark and copyright laws. Unauthorized reproduction, distribution, or commercial exploitation is strictly prohibited without explicit written consent.</p>
+                    <h4 class="font-bold text-[#2c5985] text-sm mt-3">3. Limited License</h4>
+                    <p>Users are granted a non-transferable, non-exclusive license to utilize the platform for personal financial planning and generating personal audit reports.</p>
+                </div>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-steel-100 flex justify-end flex-shrink-0">
+                <button onclick="closeLegalModal()" class="px-5 py-2 bg-[#2c5985] hover:bg-[#1a3752] text-white font-bold rounded text-xs transition-all shadow-sm">
+                    Close Document
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- ==========================================
          JAVASCRIPT PLATFORM COORDINATOR
@@ -943,6 +1107,7 @@
         window.addEventListener('DOMContentLoaded', async () => {
             runLiveGatewayCheck();
             runSipCalc();
+            runSwpCalc();
             runEmiCalc();
             runHlCalc();
             runClCalc();
@@ -986,9 +1151,11 @@
             document.getElementById('nav-account-btn').classList.add('hidden');
             closeAccountManagerModal();
             closeCalculatorModal('sip');
+            closeCalculatorModal('swp');
             closeCalculatorModal('emi');
             closeCalculatorModal('homeloan');
             closeCalculatorModal('carloan');
+            closeLegalModal();
         }
 
         function transitionToGateway(user) {
@@ -1538,6 +1705,88 @@
         }
 
         /**
+         * SWP Calculations
+         */
+        function runSwpCalc() {
+            const P = parseFloat(document.getElementById('input-swp-amount').value);
+            const W = parseFloat(document.getElementById('input-swp-withdrawal').value);
+            const R = parseFloat(document.getElementById('input-swp-return').value);
+            const Inf = parseFloat(document.getElementById('input-swp-inflation').value) || 0;
+            const Y = parseFloat(document.getElementById('input-swp-years').value);
+
+            const fmt = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+
+            document.getElementById('label-swp-amount').innerText = fmt.format(P);
+            document.getElementById('label-swp-withdrawal').innerText = fmt.format(W);
+            document.getElementById('label-swp-return').innerText = `${R.toFixed(1)}%`;
+            document.getElementById('label-swp-inflation').innerText = `${Inf.toFixed(1)}%`;
+            document.getElementById('label-swp-years').innerText = `${Y} Years`;
+
+            const totalMonths = Y * 12;
+            const i = R / 1200.0;
+            const infRate = Inf / 100.0;
+
+            let balance = P;
+            let totalWithdrawn = 0;
+            let totalInterest = 0;
+            let depletedMonth = 0;
+
+            for (let m = 1; m <= totalMonths; m++) {
+                if (balance <= 0) {
+                    if (depletedMonth === 0) depletedMonth = m - 1;
+                    continue;
+                }
+                const yearIdx = Math.floor((m - 1) / 12);
+                const currentMonthlyWithdrawal = W * Math.pow(1 + infRate, yearIdx);
+
+                const monthlyInterest = balance * i;
+                totalInterest += monthlyInterest;
+                balance = balance + monthlyInterest;
+
+                const actualWithdrawal = Math.min(currentMonthlyWithdrawal, balance);
+                totalWithdrawn += actualWithdrawal;
+                balance -= actualWithdrawal;
+            }
+
+            document.getElementById('out-swp-principal').innerText = fmt.format(P);
+            document.getElementById('out-swp-withdrawal').innerText = fmt.format(totalWithdrawn);
+            document.getElementById('out-swp-interest').innerText = fmt.format(totalInterest);
+            document.getElementById('out-swp-total').innerText = fmt.format(Math.max(0, balance));
+
+            const statusEl = document.getElementById('out-swp-status');
+            if (depletedMonth > 0) {
+                const yrs = Math.floor(depletedMonth / 12);
+                const mos = depletedMonth % 12;
+                statusEl.innerText = `⚠️ Notice: Corpus depleted after ${yrs > 0 ? yrs + ' yr ' : ''}${mos} mos due to withdrawal rate exceeding growth (including ${Inf}% annual inflation adjustment).`;
+                statusEl.classList.remove('hidden');
+            } else {
+                statusEl.classList.add('hidden');
+            }
+        }
+
+        function openLegalModal(type) {
+            document.getElementById('legal-privacy-content').classList.add('hidden');
+            document.getElementById('legal-terms-content').classList.add('hidden');
+            document.getElementById('legal-copyright-content').classList.add('hidden');
+
+            if (type === 'privacy') {
+                document.getElementById('legal-modal-title').innerText = "Privacy Policy";
+                document.getElementById('legal-privacy-content').classList.remove('hidden');
+            } else if (type === 'terms') {
+                document.getElementById('legal-modal-title').innerText = "Terms & Conditions";
+                document.getElementById('legal-terms-content').classList.remove('hidden');
+            } else if (type === 'copyright') {
+                document.getElementById('legal-modal-title').innerText = "Copyright Policy & IP Notice";
+                document.getElementById('legal-copyright-content').classList.remove('hidden');
+            }
+            document.getElementById('modal-legal').classList.remove('hidden');
+        }
+
+        function closeLegalModal() {
+            document.getElementById('modal-legal').classList.add('hidden');
+        }
+
+        /**
          * General EMI Calculations
          */
         function runEmiCalc() {
@@ -1798,6 +2047,46 @@
                     "  1. Automate Monthly SIP: Schedule auto-debit mandate on the 1st of every month.",
                     "  2. Re-invest Capital Dividends: Always choose Growth option in mutual funds for compounding.",
                     "  3. Annual Step-Up: Increase monthly contribution by 10% every year to beat inflation.",
+                    "========================================================================="
+                ];
+            } else if (calcType === 'swp') {
+                title = "SWP SYSTEMATIC WITHDRAWAL AUDIT REPORT";
+                fileName = `Upgrader_SWP_Report_${now.toISOString().slice(0,10)}.txt`;
+                const corpus = document.getElementById('input-swp-amount').value;
+                const withdrawal = document.getElementById('input-swp-withdrawal').value;
+                const rate = document.getElementById('input-swp-return').value;
+                const inf = document.getElementById('input-swp-inflation').value;
+                const years = document.getElementById('input-swp-years').value;
+                const principal = document.getElementById('out-swp-principal').innerText;
+                const totalWithdrawal = document.getElementById('out-swp-withdrawal').innerText;
+                const totalInterest = document.getElementById('out-swp-interest').innerText;
+                const finalBalance = document.getElementById('out-swp-total').innerText;
+
+                rows = [
+                    "=========================================================================",
+                    `  UPGRADER FINANCIAL ADVISORY - ${title}`,
+                    "=========================================================================",
+                    `Date & Time           : ${formattedDate}`,
+                    `Account Member        : ${user.name} (${user.email})`,
+                    `Lead Platform Developer: SURYA V`,
+                    "-------------------------------------------------------------------------",
+                    "INPUT PARAMETERS & SETTINGS:",
+                    `  • Initial Investment Corpus      : ${inrFormatter.format(corpus)}`,
+                    `  • Starting Monthly Withdrawal    : ${inrFormatter.format(withdrawal)}`,
+                    `  • Expected Annual Return Rate (%)  : ${rate}%`,
+                    `  • Annual Inflation Rate (%)       : ${inf}%`,
+                    `  • Planned Withdrawal Period       : ${years} Years (${years * 12} Months)`,
+                    "-------------------------------------------------------------------------",
+                    "CALCULATED SWP OUTCOME:",
+                    `  • Total Initial Principal         : ${principal}`,
+                    `  • Total Accumulated Withdrawals   : ${totalWithdrawal}`,
+                    `  • Total Estimated Interest Earned : ${totalInterest}`,
+                    `  • Final Remaining Corpus Balance  : ${finalBalance}`,
+                    "-------------------------------------------------------------------------",
+                    "ACTIONABLE FINANCIAL INSTRUCTIONS & STEP-BY-STEP GUIDELINES:",
+                    "  1. Safe Withdrawal Rate (SWR): Maintain monthly withdrawal rate below expected return rate to preserve principal.",
+                    "  2. Inflation Adjustment: Monthly withdrawals step up by " + inf + "% annually to protect purchasing power against inflation.",
+                    "  3. Tax Efficiency: Equity mutual fund SWP redemptions are subject to LTCG/STCG capital gains tax rules.",
                     "========================================================================="
                 ];
             } else if (calcType === 'emi') {
